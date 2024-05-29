@@ -36,10 +36,16 @@
     <ClCompile Include="src\GUI\SHA_Tab\Source\SHA_Tab.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\SHA_Tab\Source\SHA_Tab_Decrypt.cpp">
+    <ClCompile Include="src\GUI\AES_Tab\Headers\ControlPanel_Template.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\SHA_Tab\Source\SHA_Tab_Encrypt.cpp">
+    <ClCompile Include="src\GUI\AES_Tab\Source\ControlPanel_Template.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\General\Source\SignedTextCtrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Algo\Source\Functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,10 +68,13 @@
     <ClInclude Include="src\GUI\SHA_Tab\Headers\SHA_Tab.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUI\SHA_Tab\Headers\SHA_Tab_Decrypt.h">
+    <ClInclude Include="src\GUI\General\Headers\Config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUI\SHA_Tab\Headers\SHA_Tab_Encrypt.h">
+    <ClInclude Include="src\GUI\General\Headers\SignedTextCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Algo\Headers\Functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

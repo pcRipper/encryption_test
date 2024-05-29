@@ -76,9 +76,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDIR)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -90,9 +92,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDIR)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -104,9 +108,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDIR)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -118,9 +126,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDIR)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -129,23 +139,26 @@
   <ItemGroup>
     <ClCompile Include="encryption_test.cpp" />
     <ClCompile Include="src\AES256\Source\aes256.cpp" />
+    <ClCompile Include="src\Algo\Source\Functions.cpp" />
+    <ClCompile Include="src\GUI\AES_Tab\Headers\ControlPanel_Template.h" />
     <ClCompile Include="src\GUI\AES_Tab\Source\AES_Tab.cpp" />
     <ClCompile Include="src\GUI\AES_Tab\Source\AES_Tab_Decrypt.cpp" />
     <ClCompile Include="src\GUI\AES_Tab\Source\AES_Tab_Encrypt.cpp" />
+    <ClCompile Include="src\GUI\AES_Tab\Source\ControlPanel_Template.cpp" />
     <ClCompile Include="src\GUI\General\Source\MainWindow.cpp" />
+    <ClCompile Include="src\GUI\General\Source\SignedTextCtrl.cpp" />
     <ClCompile Include="src\GUI\SHA_Tab\Source\SHA_Tab.cpp" />
-    <ClCompile Include="src\GUI\SHA_Tab\Source\SHA_Tab_Decrypt.cpp" />
-    <ClCompile Include="src\GUI\SHA_Tab\Source\SHA_Tab_Encrypt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AES256\Headers\aes256.hpp" />
+    <ClInclude Include="src\Algo\Headers\Functions.h" />
     <ClInclude Include="src\GUI\AES_Tab\Headers\AES_Tab.h" />
     <ClInclude Include="src\GUI\AES_Tab\Headers\AES_Tab_Decrypt.h" />
     <ClInclude Include="src\GUI\AES_Tab\Headers\AES_Tab_Encrypt.h" />
+    <ClInclude Include="src\GUI\General\Headers\Config.h" />
     <ClInclude Include="src\GUI\General\Headers\MainWindow.h" />
+    <ClInclude Include="src\GUI\General\Headers\SignedTextCtrl.h" />
     <ClInclude Include="src\GUI\SHA_Tab\Headers\SHA_Tab.h" />
-    <ClInclude Include="src\GUI\SHA_Tab\Headers\SHA_Tab_Decrypt.h" />
-    <ClInclude Include="src\GUI\SHA_Tab\Headers\SHA_Tab_Encrypt.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

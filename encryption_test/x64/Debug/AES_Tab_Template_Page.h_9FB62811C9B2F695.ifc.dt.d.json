@@ -1,0 +1,10 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\programing\\с++\\encryption_test\\encryption_test\\src\\gui\\aes_tab\\headers\\aes_tab_template_page.h",
+        "ProvidedModule": "",
+        "Includes": [],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

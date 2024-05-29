@@ -1,6 +1,18 @@
-﻿#include <iostream>
+﻿#include <wx/wx.h>
+#include <GUI/General/Headers/MainWindow.h>
 
-int main()
+class MyApp : public wxApp
 {
-    std::cout << "Hello World!\n";
+public:
+    bool OnInit() override;
+};
+
+wxIMPLEMENT_APP(MyApp);
+
+bool MyApp::OnInit()
+{
+    MainWindow* window = new MainWindow("Encryption Test");
+    window->Show();
+
+    return true;
 }
