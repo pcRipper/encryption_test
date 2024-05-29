@@ -12,7 +12,7 @@ MainWindow::MainWindow(wxString title):
 		
 	//AES
 	auto aes_page = new AES_Tab(typesPanel);
-	typesPanel->AddPage(aes_page, "AES");
+	typesPanel->AddPage(aes_page, "AES256");
 
 
 	//SHA
