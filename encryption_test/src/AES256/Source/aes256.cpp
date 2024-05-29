@@ -1,30 +1,4 @@
-/*
- * aes256.cpp
- *
- * Copyright (c) 2014, Danilo Treffiletti <urban82@gmail.com>
- * All rights reserved.
- *
- *     This file is part of Aes256.
- *
- *     Aes256 is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU Lesser General Public License as
- *     published by the Free Software Foundation, either version 2.1
- *     of the License, or (at your option) any later version.
- *
- *     Aes256 is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *     GNU Lesser General Public License for more details.
- *
- *     You should have received a copy of the GNU Lesser General Public
- *     License along with Aes256.
- *     If not, see <http://www.gnu.org/licenses/>.
- */
-
 #include "../Headers/aes256.hpp"
-
-#include <iostream>
-#include <stdlib.h>
 
 #define FE(x)  (((x) << 1) ^ ((((x)>>7) & 1) * 0x1b))
 #define FD(x)  (((x) >> 1) ^ (((x) & 1) ? 0x8d : 0))
@@ -104,7 +78,7 @@ const unsigned char sboxinv[256] = {
 };
 
 Aes256::Aes256(const ByteArray& key)
-    : m_key(ByteArray(key.size() > KEY_SIZE ? KEY_SIZE : key.size(), 0))
+    : m_key(ByteArray(std::min(int(key.size()), KEY_SIZE), 0))
     , m_salt(ByteArray(KEY_SIZE - m_key.size(), 0))
     , m_rkey(ByteArray(KEY_SIZE, 0))
     , m_buffer_pos(0)
@@ -114,9 +88,6 @@ Aes256::Aes256(const ByteArray& key)
     for(ByteArray::size_type i = 0; i < m_key.size(); ++i)
         m_key[i] = key[i];
 }
-
-Aes256::~Aes256()
-{}
 
 ByteArray::size_type Aes256::encrypt(const ByteArray& key, const ByteArray& plain, ByteArray& encrypted)
 {
