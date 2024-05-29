@@ -23,6 +23,14 @@ std::string Algo::byteToHex(unsigned char byte)
 	return result;
 }
 
+unsigned char Algo::hexToByte(char hex)
+{
+	return std::isdigit(hex)
+		? hex - '0'
+		: std::tolower(hex) - 'a' + 10
+	;
+}
+
 wxString Algo::toUniText(std::vector<unsigned char> const& data)
 {
 	const int RES_LEN = data.size() / 2;
@@ -97,9 +105,12 @@ void Algo::fromUniHexText(wxString text, std::vector<unsigned char>& destination
 {
 	if (text.size() & 1)text.Prepend("0");
 	const int SIZE = text.size() / 2;
+	destination.resize(SIZE);
 
-	int j = 0;
 	for (int i = 0; i < SIZE; ++i) {
-		//destination[i] = []
+		destination[i] = 
+			(Algo::hexToByte(text[i * 2]) << 4) + 
+			(Algo::hexToByte(text[i * 2 + 1]))
+		;
 	}
 }

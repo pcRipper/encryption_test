@@ -1,6 +1,10 @@
 #include "../Headers/ControlPanel_Template.h"
 
-ControlPanel_Template::ControlPanel_Template(wxWindow* parent, std::list<std::string> const* menuOptions):
+ControlPanel_Template::ControlPanel_Template(
+	wxWindow* parent,
+	std::list<std::string> const* input_options_list,
+	std::list<std::string> const* output_options_list
+):
 	wxPanel(parent)
 {
 	//Left side
@@ -12,6 +16,15 @@ ControlPanel_Template::ControlPanel_Template(wxWindow* parent, std::list<std::st
 			this->inputText->textBox->SetHint("Input your text");
 			this->inputText->sign->SetLabel("Input text");
 			this->inputText->sign->SetFont(GUI::Config::Fonts::RobotoFont<12, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD>);
+		}
+
+		//choice input type
+		this->input_options = std::vector<wxString>(input_options_list->begin(), input_options_list->end());
+		this->types_input = new wxChoice(leftPanel, wxID_ANY, wxDefaultPosition, wxDefaultSize, int(this->input_options.size()), &this->input_options[0]);
+		{
+			this->types_input->SetMaxSize(wxSize(100, 25));
+			this->types_input->SetLabelText("Input Type");
+			this->types_input->SetFont(GUI::Config::Fonts::RobotoFont<11, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_MEDIUM>);
 		}
 
 		//key box
@@ -38,12 +51,14 @@ ControlPanel_Template::ControlPanel_Template(wxWindow* parent, std::list<std::st
 			this->outputText->sign->SetFont(GUI::Config::Fonts::RobotoFont<12, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD>);
 		}
 
-		//choice
-		this->options = std::vector<wxString>(menuOptions->begin(), menuOptions->end());
-		this->types_output = new wxChoice(rightPanel, wxID_ANY, wxDefaultPosition, wxDefaultSize, int(this->options.size()), &this->options[0]);
-		this->types_output->SetMaxSize(wxSize(100, 25));
-		this->types_output->SetLabelText("Output Type");
-		this->types_output->SetFont(GUI::Config::Fonts::RobotoFont<11, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_MEDIUM>);
+		//choice output type
+		this->output_options = std::vector<wxString>(output_options_list->begin(), output_options_list->end());
+		this->types_output = new wxChoice(rightPanel, wxID_ANY, wxDefaultPosition, wxDefaultSize, int(this->output_options.size()), &this->output_options[0]);
+		{
+			this->types_output->SetMaxSize(wxSize(100, 25));
+			this->types_output->SetLabelText("Output Type");
+			this->types_output->SetFont(GUI::Config::Fonts::RobotoFont<11, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_MEDIUM>);
+		}
 	}
 
 	//sizers & layout
@@ -51,6 +66,7 @@ ControlPanel_Template::ControlPanel_Template(wxWindow* parent, std::list<std::st
 	{
 		wxSizer* verticalLeft = new wxBoxSizer(wxVERTICAL);
 		verticalLeft->Add(inputText, 3, wxEXPAND | wxALL, 4);
+		verticalLeft->Add(types_input, 0, wxEXPAND | wxALL, 4);
 		verticalLeft->Add(keyText, 1, wxEXPAND | wxALL, 4);
 		verticalLeft->Add(actionButton, 1, wxEXPAND | wxALL, 4);
 

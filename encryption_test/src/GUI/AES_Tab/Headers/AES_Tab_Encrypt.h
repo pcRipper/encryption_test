@@ -19,11 +19,13 @@ public:
 
 	//local variables
 private:
-	static const std::list<std::string> menu_options;
+	static const std::list<std::string> input_menu_options;
+	static const std::list<std::string> output_menu_options;
 	ByteArray encrypted;
 
 	//events
 private:
 	virtual void OnActionClick(wxCommandEvent& event) override;
-	virtual void OnChoiceSelected(wxCommandEvent& event) override;
+	virtual void OnChoiceInputSelected(wxCommandEvent& event) override;
+	virtual void OnChoiceOutputSelected(wxCommandEvent& event) override;
 };

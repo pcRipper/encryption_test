@@ -15,7 +15,11 @@
 
 class ControlPanel_Template : public wxPanel {
 public:
-	ControlPanel_Template(wxWindow* parent, std::list<std::string> const* menu_options);
+	ControlPanel_Template(
+		wxWindow* parent,
+		std::list<std::string> const* input_options_list,
+		std::list<std::string> const* output_options_list
+	);
 
 	static const std::vector<std::function<wxString(std::vector<unsigned char> const&)>> FromBytesMapper;
 	static const std::vector<std::function<void(wxString, std::vector<unsigned char> &)>> FromUniMapper;
@@ -24,12 +28,14 @@ public:
 
 //local variables
 protected:
-	std::vector<wxString> options;
+	std::vector<wxString> input_options;
+	std::vector<wxString> output_options;
 
 //gui elements
 protected:
 	wxPanel* leftPanel;
 	SignedTextCtrl* inputText;
+	wxChoice* types_input;
 	SignedTextCtrl* keyText;
 	wxButton* actionButton;
 
@@ -40,5 +46,6 @@ protected:
 //events
 protected:
 	virtual void OnActionClick(wxCommandEvent& event) = 0;
-	virtual void OnChoiceSelected(wxCommandEvent& event) = 0;
+	virtual void OnChoiceInputSelected(wxCommandEvent& event) = 0;
+	virtual void OnChoiceOutputSelected(wxCommandEvent& event) = 0;
 };

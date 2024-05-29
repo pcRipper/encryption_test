@@ -19,7 +19,7 @@ namespace Algo {
 	void map(Iterator begin, Iterator end, std::function<void(IteratorType const&)> functor);
 	
 	std::string byteToHex(unsigned char byte);
-	unsigned char hexToHalfByTe(unsigned char hex);
+	unsigned char hexToByte(char hex);
 
 	wxString toUniText(std::vector<unsigned char> const& data);
 	wxString toBits   (std::vector<unsigned char> const& data);
